@@ -230,9 +230,8 @@ class Immocaster_Data_Mysql
 	{
 		if(strlen($sToken)<8){return false;}
 		$sql = "SELECT * FROM `".$this->_oDatabaseDb."`.`".$this->_sTableName."` WHERE ic_desc='REQUEST' AND ic_key='".$sToken."'";
-		$result = mysqli_query($sql,$this->_oDataConnection);
-		$obj = mysqli_fetch_object($result);
-		return $obj;
+		$query = $this->pdo->query($sql);
+		return $query->fetch(PDO::FETCH_OBJ);
 	}
 
     /**
@@ -361,8 +360,8 @@ class Immocaster_Data_Mysql
 	{
 		$aUsers = array();
 		$sql = "SELECT * FROM `".$this->_oDatabaseDb."`.`".$this->_sTableName."` WHERE ic_desc='APPLICATION'";
-		$result = mysqli_query($sql,$this->_oDataConnection);
-		while($obj = mysqli_fetch_object($result))
+		$query = $this->pdo->query($sql);
+		while($obj = $query->fetch(PDO::FETCH_OBJ))
 		{
 			array_push($aUsers,$obj->ic_username);
 		}
@@ -378,7 +377,7 @@ class Immocaster_Data_Mysql
 	public function deleteApplicationToken()
 	{
 		$sql = "DELETE FROM `".$this->_oDatabaseDb."`.`".$this->_sTableName."` WHERE ic_desc='APPLICATION'";
-		mysqli_query($sql,$this->_oDataConnection);
+		$this->pdo->query($sql);
 	}
 
 }

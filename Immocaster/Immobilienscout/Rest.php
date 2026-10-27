@@ -251,7 +251,7 @@ class Immocaster_Immobilienscout_Rest extends Immocaster_Immobilienscout
 	 * @param boolean $postRequest TRUE, wenn der Request ein POST-Request sein soll
      * @return mixed
      */
-	private function doRequest($sPath,$aArgs,$aRequired=array(),$sFunctionName,$oToken=null,$postRequest=FALSE)
+	private function doRequest($sPath,$aArgs,$aRequired,$sFunctionName,$oToken=null,$postRequest=FALSE)
 	{
 		$requestType = $postRequest ? 'POST' : 'GET';
 		if($postRequest=='PUT'){$requestType='PUT';}

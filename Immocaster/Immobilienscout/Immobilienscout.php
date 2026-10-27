@@ -240,7 +240,7 @@ class Immocaster_Immobilienscout
 	 * @param string Secret des Accesstoken
 	 * @return array
 	 */
-	protected function getContentRequestHeaderArray($req,$sSecret=null,$aHeader)
+	protected function getContentRequestHeaderArray($req,$sSecret,$aHeader)
 	{
 		$sAccessTokenSignature = '';
 		if($sSecret)
